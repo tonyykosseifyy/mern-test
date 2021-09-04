@@ -4,30 +4,18 @@ const express = require("express") ;
 const cors = require("cors")
 const app = express() ;
 const port = process.env.DB_HOST ;
-
-
+const morgan = require("morgan") ;
+const authRoutes = require("./routes/auth")
 
 app.use(cors()) ;
+app.use(morgan("dev")) ;
 
 
-app.get("/api" , (req , res) => {
-  res.json({
-    user : {
-      signedIn : true ,
-      name: "tony kosseify"
-    }
-  }) ;
-}) ;
+
+app.use("/api" , authRoutes) ;
 
 
-app.post("/user" , (req , res) => {
-  console.log(req.body);
-})
 
-
-app.get("/" , (req , res) => {
-  res.send("This is the Main Page") ;
-})
 
 app.listen(port , (req , res) => {
   console.log(`listening on port ${port}`) ;
