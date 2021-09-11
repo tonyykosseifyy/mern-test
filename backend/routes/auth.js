@@ -6,6 +6,10 @@ const router = express.Router() ;
 
 const { users } = require("../controllers/auth") ;
 
-router.get("/users" , users) ;
+
+
+router.post("/register" , (req, res) => {
+ console.log(req.body);
+});
 
 module.exports = router ;
