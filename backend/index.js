@@ -23,7 +23,6 @@ mongoose
   .then(() => console.log("DB CONNECTED"))
   .catch((err) => console.log(err));
 
-app.use("/api", authRoutes);
 
 fs.readdirSync('./routes').map((file) => app.use('/api', require(`./routes/${file}`)));
 
